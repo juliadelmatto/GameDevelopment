@@ -3,9 +3,9 @@ using System.Collections;
 
 public class playeronemovement : MonoBehaviour {
 
-	public bool grounded;
-	public float xstart;
-	public float ystart;
+	public bool grounded; //checks if ball is touching the ground
+	public float xstart; //x starting position of ball
+	public float ystart; //y starting position of ball
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +31,7 @@ public class playeronemovement : MonoBehaviour {
 		}
 		if (Input.GetKey (KeyCode.S)){
 			gameObject.GetComponent<Transform> ().position = new Vector3 (xstart, ystart, 0f);
+			GameObject.Find ("player1").GetComponent<Rigidbody2D>().velocity = new Vector3(0f,0f,0f);
 		}
 	}
 }

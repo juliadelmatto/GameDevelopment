@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class keep : MonoBehaviour {
+	
 	//keeps the score between scenes
 	void Awake() {
 		DontDestroyOnLoad(transform.gameObject);

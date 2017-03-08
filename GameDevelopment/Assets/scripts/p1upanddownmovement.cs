@@ -13,10 +13,10 @@ public class p1upanddownmovement : MonoBehaviour {
 	void Update () {
 
 		if (Input.GetKey (KeyCode.A)) {
-			transform.position = new Vector3 (transform.position.x,transform.position.y - 0.1f,0f);
+			transform.position = new Vector3 (transform.position.x,transform.position.y - 0.1f,0f); //moves platforms left
 		}
 		if (Input.GetKey (KeyCode.D)) {
-			transform.position = new Vector3 (transform.position.x,transform.position.y+ 0.1f, 0f);
+			transform.position = new Vector3 (transform.position.x,transform.position.y+ 0.1f, 0f); //moves platforms right
 		}
 	}
 

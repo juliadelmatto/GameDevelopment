@@ -16,10 +16,10 @@ public class platformrotation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//sets spining platforms
-		if (Input.GetKey (KeyCode.A)) {
+		if (Input.GetKey (KeyCode.A)) { //rotates left
 			pivotangle += 10;
 		}
-		if (Input.GetKey (KeyCode.D)) {
+		if (Input.GetKey (KeyCode.D)) { //rotates right
 			pivotangle -= 10;
 		}
 

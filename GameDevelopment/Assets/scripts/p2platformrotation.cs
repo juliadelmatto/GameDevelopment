@@ -19,10 +19,10 @@ public class p2platformrotation : MonoBehaviour {
 		//transform.Rotate (Vector3.up, speed * Time.deltaTime);
 
 		//player two rotation
-		if (Input.GetKey (KeyCode.LeftArrow)) {
+		if (Input.GetKey (KeyCode.LeftArrow)) { //platforms rotate left
 			pivotangle += 10;
 		}
-		if (Input.GetKey (KeyCode.RightArrow)) {
+		if (Input.GetKey (KeyCode.RightArrow)) { //platforms rotate right
 			pivotangle -= 10;
 		}
 
