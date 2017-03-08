@@ -6,7 +6,7 @@ public class playeronemovement : MonoBehaviour {
 	public bool grounded; //checks if ball is touching the ground
 	public float xstart; //x starting position of ball
 	public float ystart; //y starting position of ball
-
+	public GameObject jumpparticles;
 	// Use this for initialization
 	void Start () {
 		
@@ -23,16 +23,24 @@ public class playeronemovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//player one jump
-		if (Input.GetKey (KeyCode.W)&& grounded==true) {
-			transform.position = new Vector3 (transform.position.x + 0f, transform.position.y + 0f, 0);
+		if (Input.GetKey (KeyCode.W)&& grounded==true) { //if player presses W
+			transform.position = new Vector3 (transform.position.x + 0f, transform.position.y + 0f, 0); //ball jumps
 			this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0f,6f,0f), ForceMode2D.Impulse);//sets how high the jump is
-			grounded = false;
+			grounded = false; //ball cant jump while not touching the ground
+
+			Instantiate (jumpparticles, transform.position, new Quaternion (0f, 0f, 0f, 0f));
 		
 		}
-		if (Input.GetKey (KeyCode.S)){
-			gameObject.GetComponent<Transform> ().position = new Vector3 (xstart, ystart, 0f);
-			GameObject.Find ("player1").GetComponent<Rigidbody2D>().velocity = new Vector3(0f,0f,0f);
+		if (Input.GetKey (KeyCode.S)){ //if player presses S
+			gameObject.GetComponent<Transform> ().position = new Vector3 (xstart, ystart, 0f); //resets ball from start
+			GameObject.Find ("player1").GetComponent<Rigidbody2D>().velocity = new Vector3(0f,0f,0f); //sets velocity to zero so the ball dosent fall too fast
 		}
+	}
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.transform.root.gameObject.tag == "danger") {
+			Instantiate (jumpparticles, transform.position, new Quaternion (0f, 0f, 0f, 0f));
+		}
+
 	}
 }
 	
