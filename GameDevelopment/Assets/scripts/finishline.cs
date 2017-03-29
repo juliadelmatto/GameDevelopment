@@ -30,10 +30,12 @@ public class finishline : MonoBehaviour {
 	//when the finishline collides with either player, their score will increase, and the level will change
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.transform.root.gameObject.name == "player1"){
+		 //play win sound
 		MyScore++;//increases score
 		Debug.Log ("score"+MyScore);
 		MyScoreDisplay.text = MyScore.ToString ();
 		UnityEngine.SceneManagement.SceneManager.LoadScene (scenename); //loads next scene
+		GameObject.Find("win").GetComponent<AudioSource> ().Play ();
 	
 		}
 		if (MyScore == 3) { //display win screen when a score reaches 3
@@ -42,7 +44,9 @@ public class finishline : MonoBehaviour {
 			}
 
 	if (other.transform.root.gameObject.name == "player2") { //goes to next scene
+			GameObject.Find("win").GetComponent<AudioSource> ().Play (); //play win sound
 			MyScore2++; //increases score
+
 			MyScoreDisplay2.text = MyScore2.ToString ();
 			UnityEngine.SceneManagement.SceneManager.LoadScene (scenename); //loads next scene
 

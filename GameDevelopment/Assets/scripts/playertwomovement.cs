@@ -28,7 +28,7 @@ public class playertwomovement : MonoBehaviour {
 			this.gameObject.GetComponent<Rigidbody2D> ().AddForce (new Vector3 (0f, 6f, 0f), ForceMode2D.Impulse);
 			grounded = false; //dosen't jump while not touching the ground
 			Instantiate (jumpparticles, transform.position, new Quaternion (0f, 0f, 0f, 0f));
-
+			GameObject.Find("Jump4").GetComponent<AudioSource> ().Play (); //play jump sound
 		}
 		if (Input.GetKey (KeyCode.DownArrow)) { //if player presses the down arrow
 			gameObject.GetComponent<Transform> ().position = new Vector3 (xstart, ystart, 0f);//resets ball from starting position
