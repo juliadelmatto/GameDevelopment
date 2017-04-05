@@ -8,7 +8,7 @@ public class bouncy : MonoBehaviour {
 	public float forceToAdd = 10f;
 	public BoxCollider2D myCollider;
 
-	//public Rigidbody2D squarerigidbody;
+
 	// Use this for initialization
 	void Start () {
 
