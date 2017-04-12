@@ -7,6 +7,7 @@ public class newscene : MonoBehaviour {
 	public void LoadScene(string sceneName) //set scene name
 	{
 		SceneManager.LoadScene (sceneName); //loads scene
+
 	}
 
 }

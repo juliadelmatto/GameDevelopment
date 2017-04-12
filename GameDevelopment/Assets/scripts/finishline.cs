@@ -54,7 +54,7 @@ public class finishline : MonoBehaviour {
 
 	if (MyScore2 == 3) { //display win screen when a score reaches 3
 		UnityEngine.SceneManagement.SceneManager.LoadScene ("playertwowins"); //loads player one win screen
-		
+
 	}
 
 }

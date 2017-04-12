@@ -8,6 +8,7 @@ public class playertwomovement : MonoBehaviour {
 	public float xstart; //starting x position of ball
 	public float ystart; //starting y position of ball
 	public GameObject jumpparticles;
+	public GameObject deathparticles;
 	// Use this for initialization
 	void Start () {
 
@@ -37,7 +38,7 @@ public class playertwomovement : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.transform.root.gameObject.tag == "danger") {
-			Instantiate (jumpparticles, transform.position, new Quaternion (0f, 0f, 0f, 0f));
+			Instantiate (deathparticles, transform.position, new Quaternion (0f, 0f, 0f, 0f));
 		}
 	}
 }
