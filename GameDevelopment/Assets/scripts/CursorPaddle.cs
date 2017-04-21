@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CursorPaddle : MonoBehaviour {
 
-	//float zAxis = 2f;
-	//Vector3 mousePosition;
+	float zAxis = 2f;
+	Vector3 mousePosition;
 
-	// Use this for initialization
+	 //Use this for initialization
 	void Start () {
 
 	}
@@ -24,4 +24,5 @@ public class CursorPaddle : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 }
+
 	

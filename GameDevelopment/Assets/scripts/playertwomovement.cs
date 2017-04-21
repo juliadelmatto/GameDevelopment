@@ -9,6 +9,7 @@ public class playertwomovement : MonoBehaviour {
 	public float ystart; //starting y position of ball
 	public GameObject jumpparticles;
 	public GameObject deathparticles;
+	public GameObject partyparticles;
 	// Use this for initialization
 	void Start () {
 
@@ -36,9 +37,16 @@ public class playertwomovement : MonoBehaviour {
 			GameObject.Find ("player2").GetComponent<Rigidbody2D>().velocity = new Vector3(0f,0f,0f);//sets velocity to zero so the ball dosent fall too fast
 		}
 	}
+	//happens one frome when it touches trigger
 	void OnTriggerEnter2D(Collider2D other){
-		if (other.transform.root.gameObject.tag == "danger") {
+		if (other.transform.root.gameObject.tag == "danger") {//spaws death particles
 			Instantiate (deathparticles, transform.position, new Quaternion (0f, 0f, 0f, 0f));
 		}
 	}
-}
+	//happens multiple times
+	void OnTriggerStay2D(Collider2D other){
+		if (other.gameObject.tag == "partyplatform2") {//spawns confetti if player2 wins
+			Instantiate (partyparticles, new Vector3(transform.position.x,transform.position.y,-1f), new Quaternion (0f, 0f, 0f, 0f));
+		}
+	}
+	}

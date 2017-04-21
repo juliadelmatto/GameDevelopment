@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class keep : MonoBehaviour {
+public class Funfacts : MonoBehaviour {
 	
-	//keeps the score between scenes
-	void Awake() {
-		//keep game object between scenes
-		DontDestroyOnLoad(transform.gameObject);
-	}
+	public Text Fact1;
+	public Text Fact2;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,11 +15,6 @@ public class keep : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
-
+		
 	}
-
-
-
 }

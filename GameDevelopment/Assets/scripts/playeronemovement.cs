@@ -6,8 +6,9 @@ public class playeronemovement : MonoBehaviour {
 	public bool grounded; //checks if ball is touching the ground
 	public float xstart; //x starting position of ball
 	public float ystart; //y starting position of ball
-	public GameObject jumpparticles;
-	public GameObject deathparticles;
+	public GameObject jumpparticles; //jump particles
+	public GameObject deathparticles; //death particles
+	public GameObject partyparticles; //confetti particles
 
 	// Use this for initialization
 	void Start () {
@@ -22,28 +23,40 @@ public class playeronemovement : MonoBehaviour {
 		}
 
 	}
+
+
 	// Update is called once per frame
 	void Update () {
+
 		//player one jump
-		if (Input.GetKey (KeyCode.W)&& grounded==true) { //if player presses W
+		if (Input.GetKey (KeyCode.W) && grounded == true) { //if player presses W
 			
 			transform.position = new Vector3 (transform.position.x + 0f, transform.position.y + 0f, 0); //ball jumps
-			this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0f,6f,0f), ForceMode2D.Impulse);//sets how high the jump is
+			this.gameObject.GetComponent<Rigidbody2D> ().AddForce (new Vector3 (0f, 6f, 0f), ForceMode2D.Impulse);//sets how high the jump is
 			grounded = false; //ball cant jump while not touching the ground
 			Instantiate (jumpparticles, transform.position, new Quaternion (0f, 0f, 0f, 0f));
-			GameObject.Find("Jump4").GetComponent<AudioSource> ().Play (); //play jump sound
+			GameObject.Find ("Jump4").GetComponent<AudioSource> ().Play (); //play jump sound
 		}
 	
-		if (Input.GetKey (KeyCode.S)){ //if player presses S
+		if (Input.GetKey (KeyCode.S)) { //if player presses S
 			gameObject.GetComponent<Transform> ().position = new Vector3 (xstart, ystart, 0f); //resets ball from start
-			GameObject.Find ("player1").GetComponent<Rigidbody2D>().velocity = new Vector3(0f,0f,0f); //sets velocity to zero so the ball dosent fall too fast
-		}
-	}
-	void OnTriggerEnter2D(Collider2D other){
-		if (other.transform.root.gameObject.tag == "danger") {
-			Instantiate (deathparticles, transform.position, new Quaternion (0f, 0f, 0f, 0f));
+			GameObject.Find ("player1").GetComponent<Rigidbody2D> ().velocity = new Vector3 (0f, 0f, 0f); //sets velocity to zero so the ball dosent fall too fast
 		}
 
+
+	}
+	//happens one frome when it touches trigger
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.transform.root.gameObject.tag == "danger") {//if it touches an object tagged danger
+			Instantiate (deathparticles, transform.position, new Quaternion (0f, 0f, 0f, 0f));//instantiate particles
+
+		}
+	}
+	//happens multiple times
+	void OnTriggerStay2D(Collider2D other){
+		if (other.gameObject.tag == "partyplatform") {//if it touches an object tagged partyplatform
+			Instantiate (partyparticles, new Vector3(transform.position.x,transform.position.y,-1f), new Quaternion (0f, 0f, 0f, 0f));//instantiate particles
+		}
 	}
 }
 	
