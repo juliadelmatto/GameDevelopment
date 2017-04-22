@@ -12,6 +12,10 @@ public class finishline : MonoBehaviour {
 	public Text MyScoreDisplay2; //scoredisplay2
 	public string scenename; //set next scene
 
+	//bool scorecheck;
+
+	//public GameObject Canvas;
+
 	// Use this for initialization
 
 
@@ -21,10 +25,14 @@ public class finishline : MonoBehaviour {
 		MyScoreDisplay = GameObject.Find("player1score").GetComponent<Text>();
 		MyScoreDisplay2 = GameObject.Find("player2score").GetComponent<Text>();
 	
+		//scorecheck = true;
 	}
 
 	// Update is called once per frame
 	void Update () {
+		//if (scorecheck == true) {
+			//Instantiate (Canvas);
+			//scorecheck = false;
 
 	}
 	//when the finishline collides with either player, their score will increase, and the level will change
@@ -40,7 +48,8 @@ public class finishline : MonoBehaviour {
 		}
 		if (MyScore == 3) { //display win screen when a score reaches 3
 		UnityEngine.SceneManagement.SceneManager.LoadScene ("playeronewins"); //loads player one win screen
-
+			MyScore = 0;
+			MyScore2 = 0;
 			}
 
 	if (other.transform.root.gameObject.name == "player2") { //goes to next scene
@@ -54,7 +63,8 @@ public class finishline : MonoBehaviour {
 
 	if (MyScore2 == 3) { //display win screen when a score reaches 3
 		UnityEngine.SceneManagement.SceneManager.LoadScene ("playertwowins"); //loads player one win screen
-
+		MyScore2 = 0;
+		MyScore = 0;
 	}
 
 }

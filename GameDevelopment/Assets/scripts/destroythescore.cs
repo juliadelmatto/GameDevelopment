@@ -14,12 +14,15 @@ public class destroythescore : MonoBehaviour {
 		//automatically assigns scores in inspector
 		Score = GameObject.Find("player1score").GetComponent<Text>();
 		Score2 = GameObject.Find("player2score").GetComponent<Text>();
+
+
+		GameObject.Find("player1score").GetComponent<Text>().text = "0";
+		GameObject.Find("player2score").GetComponent<Text>().text = "0";
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//destroy scores
-		Destroy (Score);
-		Destroy (Score2);
+
 	}
 }
